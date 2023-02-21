@@ -1,6 +1,7 @@
 import pyopenjtalk
 import jaconv
 import os
+from pathlib import Path
 
 with open('voice_text.txt','r') as in_file:
     for line in in_file.readlines():
@@ -23,5 +24,6 @@ with open('voice_text.txt','r') as in_file:
         phoneme = phoneme.replace('pau','sp')
         phoneme = phoneme.replace('cl','q')
         print(phoneme)
+        Path("text").mkdir(exist_ok=True,parents=True)
         with open('text/'+name+'.txt','w') as out_file:
             out_file.write(phoneme)

@@ -1,6 +1,7 @@
 import pyopenjtalk
 import jaconv
 import os
+from pathlib import Path
 
 with open('voice_text.txt','r') as tsf:
     for line in tsf.readlines():
@@ -17,5 +18,6 @@ with open('voice_text.txt','r') as tsf:
         fulcon = [x.replace('.','')+' '+y for (x,y) in zip(dur,fulcon)]
         full_context_label = '\n'.join(fulcon)
         print(full_context_label)
+        Path("lab").mkdir(exist_ok=True,parents=True)
         with open('lab/'+name+'.lab','w') as outf:
             outf.write(full_context_label)
